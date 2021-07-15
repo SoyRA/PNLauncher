@@ -1,0 +1,10 @@
+main\\*.dcache
+ayria_appid.txt
+steam_appid.txt
+PNLauncher.bat
+PNLauncher.jar
+PNLauncher.ini
+iw5sp.exe
+t6mp.exe
+t6sp.exe
+t6zm.exe

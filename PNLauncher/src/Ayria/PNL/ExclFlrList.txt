@@ -1,0 +1,7 @@
+admin
+Ayria
+main\\demo
+main\\recipes
+main\\save
+players
+players2
