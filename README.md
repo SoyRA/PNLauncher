@@ -30,5 +30,5 @@
 
 ## Licenses
 - [PNLauncher](LICENSE)
-- [ini4j](../../PNLauncher/src/libs/ini4j-0.5.4/LICENSE.txt)
-- [Ln](../../PNLauncher/src/libs/ln/license.txt) (also uses [TRE](../../PNLauncher/src/libs/ln/license_tre.txt), [UltraGetopt](../../PNLauncher/src/libs/ln/license_ultragetop.txt) and [uint128](../../PNLauncher/src/libs/ln/license_uint128.txt))
+- [ini4j](PNLauncher/src/libs/ini4j-0.5.4/LICENSE.txt)
+- [Ln](PNLauncher/src/libs/lnstatic/license.txt) (also uses [TRE](PNLauncher/src/libs/lnstatic/license_tre.txt), [UltraGetopt](PNLauncher/src/libs/lnstatic/license_ultragetop.txt) and [uint128](PNLauncher/src/libs/lnstatic/license_uint128.txt))
