@@ -1,34 +1,50 @@
 ---
-name: Bug report
-about: Create a report to help us improve
+name: 🐛 Bug report
+about: Unexpected program behaviour that needs code correction
 title: ''
-labels: ''
+labels: 🐛 Bug, 👀 Evaluation
 assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+<!--
+Hey kid, read carefully and don't forget to preview before sending.
+For example: if you type <!-- inside this --\> nobody will be able to see it. :P
+-->
+## Bug report
 
-**To Reproduce**
-Steps to reproduce the behavior:
+### Describe the bug
+<!-- A clear and concise description of what the bug is. -->
+
+### To Reproduce
+<!-- Steps to reproduce the behavior.
+- For example: 
 1. Go to '...'
 2. Click on '....'
 3. Scroll down to '....'
-4. See error
+4. See error -->
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+### Expected behavior
+<!-- A clear and concise description of what you expected to happen. -->
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Screenshots
+<!-- If applicable, add screenshots to help explain your problem. -->
 
-**Environment:**
-- Java version: [e.g. Java 8]
-- OS version: [e.g. Windows 10 1809]
+### Environment
+<!-- Fill in the following, an example: 
+- Java version: AdoptOpenJDK 8 HotSpot
+- OS version: Windows 10 21H1
+-->
+- Java version: 
+- OS version: 
 
-**Logs**
-Pastebin the log [e.g. `Ayria/PNL/Logs/ln.exe.log` and the CMD window] and link it below:
+### Logs
+```text
+Paste the entire Ayria/PNL/Logs/ln.exe.log content here, in-between triple backtick tags!
+```
+```text
+Paste the entire CMD window (PNLauncher.bat) content here, in-between triple backtick tags!
+```
 
-**Additional context**
-Add any other context about the problem here.
+### Additional context
+<!-- Add any other context about the problem here. -->
