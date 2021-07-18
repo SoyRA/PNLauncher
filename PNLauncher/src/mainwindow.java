@@ -41,7 +41,7 @@ public class mainwindow {
 	private symlink symData = new symlink();
 	private String USR = readData.USRPath, UID = readData.UIDPath, InjArch = "Ayria\\Injector32.exe", AppID = readData.appidPath, GPnull = "Write the game path - Example: C:\\Games\\", GAnull = "< Write your Launch Options here >";
 	private int cboSel;
-
+	
 	// Launch the application
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -56,14 +56,14 @@ public class mainwindow {
 			}
 		});
 	}
-
+	
 	// Create the application
 	public mainwindow() {
 		readData.iniC();
 		readData.txtC();
 		initialize();
 	}
-
+	
 	// Initialize the contents of the frame
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private void initialize() {
@@ -140,13 +140,13 @@ public class mainwindow {
 				} else if (!txtID.getText().matches("^[0-9A-Fa-f]+$")) {
 					System.out.println("[WARN] [Player ID] Your ID must be in hexadecimal format");
 					txtArea.append("[WARN] [Player ID] Your ID must be in hexadecimal format\n");
-				} else if (!txtID.getText().matches("^(?!0+$)[0-9a-fA-F]+$")) {
+				} else if (!txtID.getText().matches("^(?!11000010+$)(?!0+$)[0-9a-fA-F]+$")) {
 					// It can't be all 0 and I should think of a better way to detect it. ;-;
 					System.out.println("[WARN] [Player ID] Your ID can't be " + txtID.getText());
 					txtArea.append("[WARN] [Player ID] Your ID can't be " + txtID.getText() + "\n");
-				} else if (chckbxID.isSelected() && txtID.getText().length() <= 8 || txtID.getText().length() > 15) {
-					System.out.println("[WARN] [Player ID] Your 64-bit ID must be between 9 and 15 characters");
-					txtArea.append("[WARN] [Player ID] Your 64-bit ID must be between 9 and 15 characters\n");
+				} else if (chckbxID.isSelected() && !txtID.getText().matches("(?=^1100001.*$)[\\w]{15}$")) {
+					System.out.println("[WARN] [Player ID] Your 64-bit ID must start with 1100001 and have 15 characters in total (for example: 110000100000001)");
+					txtArea.append("[WARN] [Player ID] Your 64-bit ID must start with 1100001 and have 15 characters in total (for example: 110000100000001)\n");
 				} else if (!chckbxID.isSelected() && txtID.getText().length() > 8) {
 					System.out.println("[WARN] [Player ID] Your 32-bit ID must be between 1 and 8 characters");
 					txtArea.append("[WARN] [Player ID] Your 32-bit ID must be between 1 and 8 characters\n");
@@ -186,32 +186,25 @@ public class mainwindow {
 				/*
 				 * The idea is to generate an ID in 32-bit hex format | https://projectnova.us/community/threads/68
 				 * 32-bit : 0x00000000 - 0xFFFFFFFF
-				 * 64-bit : 0x0000000000000000 - 0xFFFFFFFFFFFFFFFF
-				 * Note   : 8 vs 16 characters, but I see that the generated folder is 15 characters long (that is why you will see the 64-bit ID at 15 characters instead of 16).
-				 * 
-				 * Blablabla I got it all wrong, 64-bit only has 1100001 at the beginning (1100001FFFFFFFF is ok FFFFFFFFFFFFFFFF is bad)
-				 * RA pls fix
-				 * 
+				 * 64-bit : 0x110000100000000 - 0x1100001FFFFFFFF
+				 * Note   : 0x part can be omitted
 				 */
 				char[] hex = new char[] {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
 				Random rnd = new Random();
 				String hexrslt = "";
+				for (int i = 0; i < 8; i++) {
+					int resInt = rnd.nextInt(hex.length);
+					hexrslt += hex[resInt];
+				}
 				if (chckbxID.isSelected()) {
-					for (int i = 0; i < 15; i++) {
-						int resInt = rnd.nextInt(hex.length);
-						hexrslt += hex[resInt];
-					}
-					txtID.setText(hexrslt);
+					String hexrslt64 = new StringBuilder(hexrslt).insert(0, "1100001").toString();
+					txtID.setText(hexrslt64);
 					writeData.FileWP = UID;
 					writeData.FileWD = txtID.getText();
 					writeData.fileW();
 					System.out.println("[INFO] [Player ID] Your 64-bit ID has been saved as: " + readData.UsrIDtxt(1));
 					txtArea.append("[INFO] [Player ID] Your 64-bit ID has been saved as: " + readData.UsrIDtxt(1) + "\n");
 				} else {
-					for (int i = 0; i < 8; i++) {
-						int resInt = rnd.nextInt(hex.length);
-						hexrslt += hex[resInt];
-					}
 					txtID.setText(hexrslt);
 					writeData.FileWP = UID;
 					writeData.FileWD = txtID.getText();
@@ -836,6 +829,8 @@ public class mainwindow {
 		if (txtID.getText().equals("CHANG3M3") || txtID.getText().length() == 0) {
 			System.out.println("[WARN] [Player ID] I recommend to change your ID");
 			txtArea.append("[WARN] [Player ID] I recommend to change your ID\n");
+		} else if (readData.iniEF("x64ID").equals("1") && txtID.getText().matches("(?=^1100001.*$)[\\w]{15}$")) {
+			chckbxID.setSelected(true);
 		}
 		
 		// ComboBox for "Select a game..."
