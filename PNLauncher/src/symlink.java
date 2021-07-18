@@ -78,7 +78,7 @@ public class symlink {
 				System.err.println("[ERROR] Uhh we'll need that to live. If we can't extract \"" + lnexe + "\", \"" + ExclFile + "\" and \"" + ExclFlr + "\" we can't continue. =(");
 				return;
 			}
-		} else if (lnExclFile.length() > 137 || lnExclFlr.length() > 70) {
+		} else if (lnExclFile.length() != 137 || lnExclFlr.length() != 70) {
 			// Oh yes, what a way to revert the changes made by H1PrtlUpd
 			InputStream RsrclnExclFile = (getClass().getResourceAsStream(ExclFile));
 			InputStream RsrclnExclFlr = (getClass().getResourceAsStream(ExclFlr));
