@@ -24,7 +24,7 @@ public class symlink {
 	 * 
 	 * ****************************************************************/
 	private reader readData = new reader();
-	String GamePath, TargetPath = readData.getPath(), gameSel;
+	String GamePath, TargetPath = "./", gameSel;
 	private String lnexe = "Ayria/PNL/ln.exe", ExclFile = "Ayria/PNL/ExclFileList.txt", ExclFlr = "Ayria/PNL/ExclFlrList.txt", lnArgs = "--output Ayria/PNL/Logs/ln.exe.log -s -o";
 	
 	

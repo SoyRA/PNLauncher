@@ -62,15 +62,8 @@ public class writer {
 	 * All this to create a process... ;-;!
 	 * 
 	 * ****************************************************************/
-	public void procRun(int GameSel, String InjFile, String GameFile, String GameArgs, String GamePath) {
+	public void procRun(int GameSel, String InjFile, String GameFile, String GameArgs) {
 		readData.gameSel = GameSel;
-		if (readData.iniEF("Symlinks").equals("1")) {
-			InjFile = readData.getPath()+"\\"+InjFile;
-			GameFile = readData.getPath()+"\\"+GameFile;
-			GamePath = readData.getPath();
-		} else {
-			GamePath = readData.iniGP();
-		}
 		if (GameArgs == null) {
 			GameArgs = readData.iniGA();
 		} else {
@@ -79,8 +72,8 @@ public class writer {
 		
 		
 		try {
-			Process proc = Runtime.getRuntime().exec(new String[] {"CMD", "/C", InjFile, GameFile, GameArgs}, null, new File(GamePath));	// Runs the Injector##.exe with everything the user has typed in.
-			BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));										// And this is just to read what Injector##.exe says. 
+			Process proc = Runtime.getRuntime().exec(new String[] {"CMD", "/C", InjFile, GameFile, GameArgs}, null, new File("./"));	// Runs the Injector##.exe with everything the user has typed in.
+			BufferedReader stdInput = new BufferedReader(new InputStreamReader(proc.getInputStream()));									// And this is just to read what Injector##.exe says. 
 			String str = null;
 			System.out.println("\n---------------- " + InjFile.replaceAll("^[/\\\\\\\\]?(?:.+[/\\\\\\\\]+?)?(.+?)[/\\\\\\\\]?$", "$1") + " ----------------\n"); // All to say 32 or 64 . _  .
 			while ((str = stdInput.readLine()) != null) {

@@ -623,27 +623,27 @@ public class mainwindow {
 				case 1:
 					writeData.FileWD = readData.exeAppID[0];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[0], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[0], null);
 					break;
 				case 2:
 					writeData.FileWD = readData.exeAppID[2];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[2], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[2], null);
 					break;
 				case 3:
 					writeData.FileWD = readData.exeAppID[5];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[5], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[5], null);
 					break;
 				case 4:
 					writeData.FileWD = readData.exeAppID[7];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[7], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[7], null);
 					break;
 				case 5:
 					writeData.FileWD = readData.exeAppID[9];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[9], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[9], null);
 					break;
 				default:
 					break;
@@ -672,27 +672,27 @@ public class mainwindow {
 				case 1:
 					writeData.FileWD = readData.exeAppID[1];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[1], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[1], null);
 					break;
 				case 2:
 					writeData.FileWD = readData.exeAppID[4];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[4], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[4], null);
 					break;
 				case 3:
 					writeData.FileWD = readData.exeAppID[6];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[6], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[6], null);
 					break;
 				case 4:
 					writeData.FileWD = readData.exeAppID[8];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[8], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[8], null);
 					break;
 				case 5:
 					writeData.FileWD = readData.exeAppID[10];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[10], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[10], null);
 					break;
 				default:
 					break;
@@ -721,12 +721,12 @@ public class mainwindow {
 				case 2:
 					writeData.FileWD = readData.exeAppID[3];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[3], null, null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[3], null);
 					break;
 				case 4:
 					writeData.FileWD = readData.exeAppID[8];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[8], "+zombiesMode 1", null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[8], "+zombiesMode 1");
 					break;
 				default:
 					break;
@@ -755,7 +755,7 @@ public class mainwindow {
 				case 4:
 					writeData.FileWD = readData.exeAppID[8];
 					writeData.fileW();
-					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[8], "+survival 1", null);
+					writeData.procRun(readData.gameSel=cboSel, InjArch, readData.exeFile[8], "+survival 1");
 					break;
 				default:
 					break;
