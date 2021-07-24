@@ -94,11 +94,9 @@ public class symlink {
 		
 		
 		// Checks if the current directory has only PNLauncher.bat, PNLauncher.jar, PNLauncher.ini and Ayria
-		// Check if the current directory has any symlinks
-		List<Path> chckFiles = null, chckSymlink = null;
+		List<Path> chckFiles = null;
 		try {
 			chckFiles = Files.walk(Paths.get(""), 1).filter(F -> Files.isRegularFile(F) && !F.equals(Paths.get("PNLauncher.bat")) && !F.equals(Paths.get("PNLauncher.jar")) && !F.equals(iniFile.toPath()) && !F.equals(lnFile.toPath()) || Files.isDirectory(F) && !F.equals(Paths.get("")) && !F.equals(FLR.toPath())).collect(Collectors.toList());
-			chckSymlink = Files.walk(Paths.get("")).filter(Files::isSymbolicLink).collect(Collectors.toList());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.err.println("[ERROR] " + e);
@@ -117,19 +115,18 @@ public class symlink {
 		if (old == null || cur.equals(old)) {
 			// Do nothing a,a
 		} else {
-			if (!chckSymlink.isEmpty() && !getFlr().isEmpty()) {
-				moveFiles(0, old);
-				if (cur.equals("H1")) {
-					H1PrtlUpd();
+			if (new File("Ayria/PNL/" + cur).exists()) {
+				if (!getFlr().isEmpty()) {
+					moveFiles(0, old);
 				}
-				chckPost();
-			} else {
 				moveFiles(1, cur);
-				if (cur.equals("H1")) {
-					H1PrtlUpd();
-				}
-				chckPost();
+			} else {
+				moveFiles(0, old);
 			}
+			if (cur.equals("H1")) {
+				H1PrtlUpd();
+			}
+			chckPost();
 		}
 	}
 	
