@@ -192,7 +192,7 @@ public class symlink {
 				destn.toFile().mkdirs();
 				// All except "main/*.dcache"
 				try (Stream<Path> files = Files.walk(src).filter(Files::isRegularFile).filter(F -> !F.getFileName().toString().endsWith("dcache"))) {
-					//files.forEach(F -> System.out.println(src.resolve(F.getFileName()) + " -> " + destn.resolve(F.getParent()).resolve(F.getFileName())))
+					//files.forEach(F -> System.out.println(src.resolve(F.getFileName()) + " -> " + destn.resolve(F.getParent()).resolve(F.getFileName())));
 					files.forEach(F -> {
 						try {
 							Files.createDirectories(destn.resolve(F.getParent()));
@@ -208,11 +208,11 @@ public class symlink {
 				}
 				// Just "main/*.dcache"
 				try (Stream<Path> dcacheFiles = Files.walk(src).filter(Files::isRegularFile).filter(F -> F.getFileName().toString().endsWith("dcache"))) {
-					//dcacheFiles.forEach(F -> System.out.println(src.resolve(F.getFileName()) + " -> " + destn.resolve(F.getParent()).resolve(F.getFileName())));
+					//dcacheFiles.forEach(F -> System.out.println(src + " -> " + destn.resolve(F.getParent()).resolve(F.getFileName())));
 					dcacheFiles.forEach(F -> {
 						try {
 							Files.createDirectories(destn.resolve(F.getParent()));
-							Files.move(src.resolve(""), destn.resolve(F));
+							Files.move(src, destn.resolve(F));
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							System.err.println("[ERROR] " + e);
@@ -238,10 +238,15 @@ public class symlink {
 			if (!src.toFile().exists()) {
 				break;
 			}
-			try (Stream<Path> files = Files.walk(src, 1).filter(F -> Files.exists(F) && Files.isDirectory(F) && !F.equals(src))) {
+			try (Stream<Path> files = Files.walk(src, 1).filter(F -> Files.exists(F) && Files.isDirectory(F) && !F.equals(src) && !F.equals(Paths.get(src+"/PrtlUpd")))) {
 				//files.forEach(F -> System.out.println(src.resolve(F.getFileName()) + " -> " + destn.resolve(F.getFileName())));
 				files.forEach(F -> {
 					try {
+						if (Files.exists(destn.resolve(F.getFileName()))) {
+							//System.out.println(destn.resolve(F.getFileName()) + " -> " + destn.resolve(F.getFileName()).toString().concat("Del"));
+							Files.move(destn.resolve(F.getFileName()), Paths.get(destn.resolve(F.getFileName()).toString().concat("Del"))); // Let cleanDir() deal with this
+						}
+						//System.out.println(src.resolve(F.getFileName()) + " -> " + destn.resolve(F.getFileName()));
 						Files.move(src.resolve(F.getFileName()), destn.resolve(F.getFileName()));
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
