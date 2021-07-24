@@ -104,6 +104,9 @@ public class symlink {
 		
 		
 		if (chckFiles.isEmpty()) {
+			if (new File("Ayria/PNL/" + cur).exists()) {
+				moveFiles(1, cur);
+			}
 			if (cur.equals("H1")) {
 				H1PrtlUpd();
 			}
