@@ -366,14 +366,16 @@ public class symlink {
 		}
 		
 		
-		Path src = Paths.get(H1Prtl.toURI());
+		Path src = Paths.get(H1Prtl.toString());
 		Path destn = Paths.get("");
 		try {
 			Files.walk(src)
-				 .filter(F -> !F.equals(src))
+				 .filter(Files::isRegularFile)
+				 //.forEach(F -> System.out.println(destn.resolve(src.relativize(F.getParent()))));
 				 //.forEach(F -> System.out.println(F + " -> " + destn.resolve(src.relativize(F))));
 				 .forEach(F -> {
 					try {
+						Files.createDirectories(destn.resolve(src.relativize(F.getParent())));
 						Files.copy(F, destn.resolve(src.relativize(F)), StandardCopyOption.REPLACE_EXISTING);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
