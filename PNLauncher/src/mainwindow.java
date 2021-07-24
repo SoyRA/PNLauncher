@@ -73,7 +73,7 @@ public class mainwindow {
 		frmPNL.setIconImage(Toolkit.getDefaultToolkit().getImage(mainwindow.class.getResource("/img/PN-Logo.png")));
 		frmPNL.getContentPane().setBackground(Color.decode("#0d1117"));
 		frmPNL.setResizable(false);
-		frmPNL.setTitle("PNLauncher (v0.1.0)");
+		frmPNL.setTitle("PNLauncher (v0.1.7)");
 		frmPNL.setSize (393, 360);
 		frmPNL.setLocationRelativeTo (null);
 		frmPNL.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
